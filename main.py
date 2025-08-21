@@ -1,3 +1,4 @@
+import threading
 import discord
 from discord.ext import commands
 import logging
@@ -92,5 +93,8 @@ async def poll(ctx, *, question):
     await poll_massage.add_reaction("👍")
     await poll_massage.add_reaction("👎")
 
-
-bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+if __name__ == "__main__":
+    # Lancer Flask dans un thread séparé
+    threading.Thread(target=run_flask).start()
+    # Lancer le bot Discord
+    bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
