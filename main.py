@@ -81,6 +81,7 @@ async def on_member_join(member : discord.Member):
     await member.send(f"Welcome to {guild_name}, {member.name} !")
 
 
+
 @bot.event
 async def on_message(message):
     await moderate_the_game_message(message)

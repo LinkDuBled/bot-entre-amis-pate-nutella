@@ -1,0 +1,2 @@
+- Bot anti the game (limité)  
+- D'autres projets à venir (manque d'inspi)
