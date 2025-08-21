@@ -3,6 +3,7 @@ from discord.ext import commands
 import logging
 from dotenv import load_dotenv
 import os
+from flask import Flask
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -11,6 +12,19 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 intents = discord.Intents.all()
 
 bot = commands.Bot(command_prefix='!', intents=intents)
+
+# --- Flask app juste pour Render ---
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot Discord is running!"
+
+def run_flask():
+    port = int(os.environ.get("PORT", 5000))  # Render donne le port via variable d'env
+    app.run(host="0.0.0.0", port=port)
+
+# --- Discord bot ---
 
 secret_role="weeb"
 
