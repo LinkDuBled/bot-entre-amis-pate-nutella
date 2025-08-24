@@ -127,9 +127,9 @@ async def remove(interaction: discord.Interaction) -> None:
 @bot.tree.command(name="roulette_russe", description="lance une roulette russe pour timeout")
 async def roulette_russe(interaction: discord.Interaction) -> None:
     if random.randint(0, 1) == 0:
-        await interaction.response.send_message("Tu a joué et t'as perdu ! Maintenant assume les conséquences. \n https://tenor.com/view/social-credit-gif-23976170")
+        await interaction.response.send_message("Tu a joué et t'as perdu[͘](https://tenor.com/view/social-credit-gif-23976170) ! Maintenant assume les conséquences. \n ")
     else:
-        await interaction.response.send_message("GG tu a gagné, voici ton cadeau \n https://tenor.com/view/social-credit-credit-social-%D1%83%D0%B2%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BB%D1%8E%D1%81-%D1%83%D0%B2%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-gif-1626328442317885176")
+        await interaction.response.send_message("GG[͘](https://tenor.com/view/social-credit-credit-social-%D1%83%D0%B2%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BB%D1%8E%D1%81-%D1%83%D0%B2%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-gif-1626328442317885176) tu a gagné, voici ton cadeau")
 
 
 @bot.tree.command(name="secret", description="Only for the secret role")
