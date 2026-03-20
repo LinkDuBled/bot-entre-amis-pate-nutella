@@ -46,7 +46,7 @@ async def moderate_the_game_67_message(message: discord.Message) -> bool:
         return False
 
     content_norm = re.sub(r'[^a-zA-Z]', '', unidecode.unidecode((message.content or "").replace(" ", "").lower().replace("@", "a")))
-    if "thegame" or "67" in content_norm:
+    if ("thegame" in content_norm) or ("67" in content_norm) :
         # Tente de supprimer le message et notifie dans le salon
         try:
             await message.delete()
