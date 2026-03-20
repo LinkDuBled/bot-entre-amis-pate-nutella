@@ -45,7 +45,7 @@ async def moderate_the_game_67_message(message: discord.Message) -> bool:
     if message.author == message.guild.me or message.author == message.channel.guild.me if hasattr(message.channel, "guild") else False:
         return False
 
-    content_norm = re.sub(r'[^a-zA-Z]', '', unidecode.unidecode((message.content or "").replace(" ", "").lower().replace("@", "a")))
+    content_norm = re.sub(r'[^a-zA-Z0-9]', '', unidecode.unidecode((message.content or "").replace(" ", "").lower().replace("@", "a")))
     if ("thegame" in content_norm) or ("67" in content_norm) :
         # Tente de supprimer le message et notifie dans le salon
         try:
@@ -85,12 +85,12 @@ async def on_member_join(member : discord.Member):
 
 @bot.event
 async def on_message(message):
-    await moderate_the_game_message(message)
+    await moderate_the_game_67_message(message)
     await bot.process_commands(message)
 
 @bot.event
 async def on_message_edit(before, after):
-    await moderate_the_game_message(after)
+    await moderate_the_game_67_message(after)
     await bot.process_commands(after)
 
 
