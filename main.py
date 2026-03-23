@@ -36,7 +36,7 @@ def run_flask():
 
 secret_role = "weeb"
 
-async def moderate_the_game_67_message(message: discord.Message) -> bool:
+async def moderate_the_game_message(message: discord.Message) -> bool:
     """
     Retourne True si le message a été modéré (supprimé + notification),
     False sinon.
@@ -46,7 +46,7 @@ async def moderate_the_game_67_message(message: discord.Message) -> bool:
         return False
 
     content_norm = re.sub(r'[^a-zA-Z0-9]', '', unidecode.unidecode((message.content or "").replace(" ", "").lower().replace("@", "a")))
-    if ("thegame" in content_norm) or ("67" in content_norm) :
+    if ("thegame" in content_norm):
         # Tente de supprimer le message et notifie dans le salon
         try:
             await message.delete()
@@ -85,12 +85,12 @@ async def on_member_join(member : discord.Member):
 
 @bot.event
 async def on_message(message):
-    await moderate_the_game_67_message(message)
+    await moderate_the_game_message(message)
     await bot.process_commands(message)
 
 @bot.event
 async def on_message_edit(before, after):
-    await moderate_the_game_67_message(after)
+    await moderate_the_game_message(after)
     await bot.process_commands(after)
 
 
